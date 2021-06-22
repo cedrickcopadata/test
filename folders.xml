@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<Appli>
+   <Folder Name="Graphic"/>
+   <Folder Name="Programs"/>
+   <Folder Name="Recipe"/>
+   <Folder Name="Signals"/>
+   <Folder Name="Soft Scope"/>
+   <Folder Name="Spy"/>
+   <Folder Name="String Tables"/>
+   <Program Name="main"/>
+   <File Name="ied.icd"/>
+   <File Name="ied01.icd"/>
+   <FieldBus/>
+   <Binding/>
+   <Profiles/>
+   <IOS/>
+   <GlobalDef/>
+   <Vars/>
+   <Types/>
+</Appli>

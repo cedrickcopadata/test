@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" version="2007" revision="B">
+   <Header id="straton 2" nameStructure="IEDName"/>
+   <Communication>
+      <SubNetwork name="SubNet1" type="8-MMS">
+         <Text/>
+         <ConnectedAP iedName="TEMPLATE" apName="MyAccPoint">
+            <Address>
+               <P type="IP">0.0.0.0</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">0.0.0.0</P>
+               <P type="OSI-TSEL">0001</P>
+               <P type="OSI-SSEL">0001</P>
+               <P type="OSI-PSEL">00000001</P>
+               <P type="VLAN-ID">001</P>
+            </Address>
+         </ConnectedAP>
+      </SubNetwork>
+   </Communication>
+   <IED name="TEMPLATE" originalSclVersion="2007" originalSclRevision="B">
+      <Services nameLength="64">
+         <DynAssociation max="6"/>
+         <GetDirectory/>
+         <GetDataObjectDefinition/>
+         <DataObjectDirectory/>
+         <GetDataSetValue/>
+         <DataSetDirectory/>
+         <ConfDataSet modify="true" maxAttributes="100" max="10"/>
+         <DynDataSet maxAttributes="100" max="10"/>
+         <ReadWrite/>
+         <ConfReportControl bufConf="true" bufMode="buffered" max="10"/>
+         <GetCBValues/>
+         <ReportSettings rptID="Dyn" optFields="Dyn" bufTime="Dyn" trgOps="Dyn" intgPd="Dyn" cbName="Conf" datSet="Dyn"/>
+         <GSESettings appID="Conf" cbName="Conf" datSet="Conf"/>
+         <GOOSE max="10"/>
+         <FileHandling/>
+         <ClientServices goose="true" maxGOOSE="128" supportsLdName="true" maxAttributes="1000" gsse="false" bufReport="false" unbufReport="false" readLog="false" sv="false" maxReports="0" maxSMV="0"/>
+         <SupSubscription maxGo="0" maxSv="0"/>
+      </Services>
+      <AccessPoint name="MyAccPoint">
+         <Server>
+            <Authentication/>
+         </Server>
+      </AccessPoint>
+   </IED>
+   <DataTypeTemplates>
+      <LNodeType id="LLN0" lnClass="LLN0">
+         <DO name="NamPlt" type="LPL_LLN0"/>
+         <DO name="Beh" type="ENS_Beh"/>
+         <DO name="Health" type="ENS_Health"/>
+         <DO name="Mod" type="ENC_Mod"/>
+      </LNodeType>
+      <LNodeType id="LPHD" lnClass="LPHD">
+         <DO name="PhyNam" type="DPL"/>
+         <DO name="PhyHealth" type="ENS_Health"/>
+         <DO name="Proxy" type="SPS"/>
+      </LNodeType>
+      <LNodeType id="GGIOdemo" lnClass="GGIO">
+         <DO name="Beh" type="ENS_Beh"/>
+      </LNodeType>
+      <DOType id="LPL_LLN0" cdc="LPL">
+         <DA name="vendor" bType="VisString255" fc="DC"/>
+         <DA name="swRev" bType="VisString255" fc="DC"/>
+         <DA name="configRev" bType="VisString255" fc="DC"/>
+         <DA name="ldNs" bType="VisString255" fc="EX" desc="shall be included in LLN0 only;"/>
+      </DOType>
+      <DOType id="ENS_Beh" cdc="ENS">
+         <DA name="stVal" bType="Enum" type="Beh" fc="ST" dchg="true" dupd="true"/>
+         <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+         <DA name="t" bType="Timestamp" fc="ST"/>
+      </DOType>
+      <DOType id="ENS_Health" cdc="ENS">
+         <DA name="stVal" bType="Enum" type="Health" fc="ST" dchg="true" dupd="true"/>
+         <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+         <DA name="t" bType="Timestamp" fc="ST"/>
+      </DOType>
+      <DOType id="ENC_Mod" cdc="ENC">
+         <DA name="stVal" bType="Enum" type="Mod" fc="ST" dchg="true"/>
+         <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+         <DA name="t" bType="Timestamp" fc="ST"/>
+         <DA name="ctlModel" bType="Enum" type="CtlModels" fc="CF" dchg="true"/>
+      </DOType>
+      <DOType id="DPL" cdc="DPL">
+         <DA name="vendor" bType="VisString255" fc="DC"/>
+      </DOType>
+      <DOType id="SPS" cdc="SPS">
+         <DA name="stVal" bType="BOOLEAN" fc="ST" dchg="true" desc="TRUE | FALSE"/>
+         <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+         <DA name="t" bType="Timestamp" fc="ST"/>
+      </DOType>
+      <EnumType id="Beh">
+         <EnumVal ord="1">on</EnumVal>
+         <EnumVal ord="2">blocked</EnumVal>
+         <EnumVal ord="3">test</EnumVal>
+         <EnumVal ord="4">test/blocked</EnumVal>
+         <EnumVal ord="5">off</EnumVal>
+      </EnumType>
+      <EnumType id="Health">
+         <EnumVal ord="1">Ok</EnumVal>
+         <EnumVal ord="2">Warning</EnumVal>
+         <EnumVal ord="3">Alarm</EnumVal>
+      </EnumType>
+      <EnumType id="Mod">
+         <EnumVal ord="1">on</EnumVal>
+         <EnumVal ord="2">blocked</EnumVal>
+         <EnumVal ord="3">test</EnumVal>
+         <EnumVal ord="4">test/blocked</EnumVal>
+         <EnumVal ord="5">off</EnumVal>
+      </EnumType>
+      <EnumType id="CtlModels">
+         <EnumVal ord="0">status-only</EnumVal>
+         <EnumVal ord="1">direct-with-normal-security</EnumVal>
+         <EnumVal ord="2">sbo-with-normal-security</EnumVal>
+         <EnumVal ord="3">direct-with-enhanced-security</EnumVal>
+         <EnumVal ord="4">sbo-with-enhanced-security</EnumVal>
+      </EnumType>
+   </DataTypeTemplates>
+</SCL>

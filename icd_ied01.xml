@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" version="2007" revision="B">
+   <Header id="straton 2" nameStructure="IEDName"/>
+   <Communication>
+      <SubNetwork name="SubNet1" type="8-MMS">
+         <Text/>
+         <ConnectedAP iedName="TEMPLATE" apName="AccPoint">
+            <Address>
+               <P type="IP">0.0.0.0</P>
+               <P type="IP-SUBNET">255.255.255.0</P>
+               <P type="IP-GATEWAY">0.0.0.0</P>
+               <P type="OSI-TSEL">0001</P>
+               <P type="OSI-SSEL">0001</P>
+               <P type="OSI-PSEL">00000001</P>
+               <P type="VLAN-ID">001</P>
+            </Address>
+         </ConnectedAP>
+      </SubNetwork>
+   </Communication>
+   <IED name="TEMPLATE" originalSclVersion="2007" originalSclRevision="B">
+      <Services nameLength="64">
+         <DynAssociation max="6"/>
+         <GetDirectory/>
+         <GetDataObjectDefinition/>
+         <DataObjectDirectory/>
+         <GetDataSetValue/>
+         <DataSetDirectory/>
+         <ConfDataSet modify="true" maxAttributes="100" max="10"/>
+         <DynDataSet maxAttributes="100" max="10"/>
+         <ReadWrite/>
+         <ConfReportControl bufConf="true" bufMode="buffered" max="10"/>
+         <GetCBValues/>
+         <ReportSettings rptID="Dyn" optFields="Dyn" bufTime="Dyn" trgOps="Dyn" intgPd="Dyn" cbName="Conf" datSet="Dyn"/>
+         <GSESettings appID="Conf" cbName="Conf" datSet="Conf"/>
+         <GOOSE max="10"/>
+         <FileHandling/>
+         <ClientServices goose="true" maxGOOSE="128" supportsLdName="true" maxAttributes="1000" gsse="false" bufReport="false" unbufReport="false" readLog="false" sv="false" maxReports="0" maxSMV="0"/>
+         <SupSubscription maxGo="0" maxSv="0"/>
+      </Services>
+      <AccessPoint name="AccPoint">
+         <Server>
+            <Authentication/>
+         </Server>
+      </AccessPoint>
+   </IED>
+   <DataTypeTemplates/>
+</SCL>
